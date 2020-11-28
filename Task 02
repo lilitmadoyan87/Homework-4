@@ -1,0 +1,14 @@
+function removeByLetter(arr, letter) {
+  let letterUpper = letter.toUpperCase();
+  for(let i = 0; i < arr.length; i++) {      
+    if(arr[i][0] === letterUpper){
+      arr.splice(i, 1)
+    } 
+  }
+  return arr;
+}
+
+arr = ['God', 'Hello', 'Dreams', 'Star Wars'];
+let letter = 'u';
+console.log(removeByLetter(arr, letter));
+console.log();
