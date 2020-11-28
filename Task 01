@@ -1,0 +1,26 @@
+function getNumbersWithEvenDigit(num1, num2) {
+  let result = [];
+  let num = 'Such numbers does not exist';
+  for(let i = num1; i <= num2; i++) {
+    if(isDigitOfNumberEven(i) === true) {
+      result.push(i);
+      num = result.join(',');
+    }
+  }
+  return num;
+}
+
+function isDigitOfNumberEven(num) {
+  let numStr = String(num);
+  for (i = 0; i < numStr.length; i++) {
+    if(numStr[i] % 2) {
+      return;
+      break;
+    }
+  }
+  return true;
+}
+
+let num1 = 20;
+let num2 = 199;
+console.log(getNumbersWithEvenDigit(num1, num2));
