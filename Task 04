@@ -1,0 +1,61 @@
+function cleanUpPhoneNumber(num) {
+  let newNum = ignoreSpaces(num);
+  let result;
+  if(newNum.length < 10) {
+    result = 'Bad number: digits < 10'
+  } else if(newNum.length === 10 && containsSymbols(newNum) === false) {
+    result = newNum;
+  } else if(newNum.length === 10 && containsSymbols(newNum) === true) {
+    result = 'Bad number: digits = 10, but contains symbol'
+  } else if(newNum.length > 10) {
+      if(newNum.length === 11 && containsSymbols(newNum)=== true) {
+      if(newNum[0] === '+' && ignoreSymbols(newNum) !== '') {
+        result = ignoreSymbols(newNum)
+      } else{
+        result = 'Bad number: digits = 11, but contains symbol in the middle'
+      }
+    } else {
+      result = 'Bad number: digits > 10 and != +10'
+    }    
+  }
+  return result;
+}
+
+function ignoreSpaces(num) {
+  let str = '';
+  for(let i = 0; i < num.length; i++) {
+    if(num[i] !== ' ') {
+      str += num[i]
+    } else if(num[i] === ' ') {
+      continue;
+    }
+  }
+  return str;
+}
+
+function containsSymbols(string) {
+  for(let i = 0; i < string.length; i++) {
+    if(string[i] === '+') {
+      return true;
+    }
+  }
+  return false;
+}
+
+function ignoreSymbols(string) {
+  let str = '';
+  for(let i = 1; i < string.length; i++) {
+    if(string[i] !== '+' && string[0] ==="+") {
+      str += string[i]
+    } else if(string[i] === "+") {
+      break;
+    }
+  }
+    return str;
+}
+
+let num = '13456987+8';
+console.log(cleanUpPhoneNumber(num));
+// console.log(ignoreSpaces(num));
+// console.log(ignoreSymbols(num));
+// console.log(containsSymbols(num));
