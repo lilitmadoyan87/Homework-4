@@ -1,1 +1,31 @@
-// 
+function lengthen(str1, str2) {
+  let res = '';
+  if(str1.length > str2.length) {
+    for(let i = 0; i < str1.length; i++ ) {
+      for(let j = 0; j < str2.length; j++) {
+        if(res.length < str1.length) {
+          res += str2[j]
+        } else{
+          break;
+        }
+      }
+    } 
+  } else {
+      for(let i = 0; i < str2.length; i++ ) {
+        for(let j = 0; j < str1.length; j++) {
+          if(res.length < str2.length) {
+            res += str1[j]
+          } else{
+            break;
+          }
+        }
+      } 
+    }
+    return res; 
+}
+
+
+
+let str1 = 'University';
+let str2 = 'Help';
+console.log(lengthen(str1, str2));
